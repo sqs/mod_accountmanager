@@ -1,7 +1,4 @@
-AuthType Basic
-AuthName "mod_accountmanager test"
-AuthBasicProvider file
-AuthUserFile /var/www/test-mod-accountmanager.mutualauth.org/.htpasswd
-Require valid-user
-
-# see tests for usernames and passwds
+<Files "?*">
+    SetHandler accountmanager
+    AccountManagerAMCDURL "http://test-mod-accountmanager.mutualauth.org/amcd.json"
+</Files>
