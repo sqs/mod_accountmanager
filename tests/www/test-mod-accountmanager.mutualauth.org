@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+             ServerName test-mod-accountmanager.mutualauth.org
+             ServerAlias test-mod-accountmanager.local.mutualauth.org
+             DocumentRoot /var/www/test-mod-accountmanager.mutualauth.org
+             <Directory /var/www/test-mod-accountmanager.mutualauth.org>
+                 AllowOverride All
+             </Directory>
+             
+             LogLevel debug
+                      
+             <IfModule !mod_accountmanager.c>
+                       LoadModule accountmanager_module modules/mod_accountmanager.so
+             </IfModule>
+</VirtualHost>

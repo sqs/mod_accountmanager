@@ -1,7 +1,7 @@
 export CC=gcc
 export CFLAGS=-Wall -Werror -g
 
-export SRC=mod_auth_status.c
+export SRC=mod_accountmanager.c
 export OBJ=$(SRC:.c=.o)
 LDFLAGS=$(LIBS)
 
@@ -24,7 +24,7 @@ restart:
 	sudo /etc/init.d/apache2 restart
 
 test:
-	$(MAKE) -C test
+	$(MAKE) -C tests
 
 test_build:
-	$(MAKE) -C test build
+	$(MAKE) -C tests build
