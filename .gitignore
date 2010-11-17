@@ -1,0 +1,7 @@
+.libs
+*.la
+*.lo
+*.slo
+*.pyc
+TAGS
+*.o
