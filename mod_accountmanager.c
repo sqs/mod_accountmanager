@@ -5,7 +5,7 @@
 #include "apr_strings.h"
 
 const char X_AMS_HEADER_KEY[] = "X-Account-Management-Status";
-const char X_AMS_FORMAT[] = "active; id=\"%s\"";
+const char X_AMS_FORMAT[] = "active; authmethod=\"http-pake\"; id=\"%s\"";
 const char X_AMS_INACTIVE[] = "none";
 const char X_AMS_USER_VALID_CHARS[] = 
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@,.-_+ ";

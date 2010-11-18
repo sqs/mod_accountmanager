@@ -52,7 +52,7 @@ class TestModAccountManager(unittest.TestCase):
 
     def test_authenticated_request(self):
         res = self.__authenticated_request('jsmith')
-        self.assertEqual('active; id="jsmith"',
+        self.assertEqual('active; authmethod="http-pake"; id="jsmith"',
                          res.headers['X-Account-Management-Status'])
         self.assertHasLinkHeader(res)
 
