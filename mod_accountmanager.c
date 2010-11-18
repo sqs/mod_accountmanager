@@ -93,7 +93,7 @@ static int add_am_link_header(request_rec *r) {
 static void accountmanager_register_hooks(apr_pool_t *p)
 {
     ap_hook_access_checker(add_am_link_header, NULL, NULL, APR_HOOK_MIDDLE);
-    ap_hook_fixups(add_am_status_header, NULL, NULL, APR_HOOK_MIDDLE);
+    ap_hook_fixups(add_am_status_header, NULL, NULL, APR_HOOK_LAST);
 }
 
 
@@ -113,14 +113,28 @@ void *create_accountmanager_dir_config(apr_pool_t *p, char *dir) {
     return conf;
 }
 
+void *create_accountmanager_server_config(apr_pool_t *p, server_rec *server) {
+    accountmanager_config_rec *conf;
+
+    if (server == NULL)
+        return NULL;
+
+    conf = (accountmanager_config_rec *)apr_pcalloc(p, sizeof(accountmanager_config_rec));
+    if (conf) {
+        conf->server_hostname = apr_pstrdup(p, server->server_hostname);
+    }
+    
+    return conf;
+}
+
+
 /* Dispatch list for API hooks */
 module AP_MODULE_DECLARE_DATA accountmanager_module = {
     STANDARD20_MODULE_STUFF, 
     create_accountmanager_dir_config, /* create per-dir    config structures */
     NULL,                  /* merge  per-dir    config structures */
-    NULL,                  /* create per-server config structures */
+    NULL, /* create per-server config structures */
     NULL,                  /* merge  per-server config structures */
     accountmanager_cmds,   /* table of config file commands       */
     accountmanager_register_hooks  /* register hooks                      */
 };
-

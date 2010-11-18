@@ -1,4 +1,5 @@
-<Files "?*">
-    SetHandler accountmanager
-    AccountManagerAMCDURL "http://test-mod-accountmanager.mutualauth.org/amcd.json"
-</Files>
+AccountManagerAMCDURL "http://test-mod-accountmanager.mutualauth.org/amcd.json"
+
+
+Options +ExecCGI
+AddHandler cgi-script .cgi

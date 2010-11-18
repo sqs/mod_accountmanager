@@ -8,6 +8,7 @@
 module AP_MODULE_DECLARE_DATA accountmanager_module;
 
 typedef struct accountmanager_config_struct {
+    const char *server_hostname;
     const char *dir_name;
     const char *amcd_url;
 } accountmanager_config_rec;

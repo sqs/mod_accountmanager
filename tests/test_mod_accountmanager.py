@@ -15,7 +15,7 @@ passwd[username_too_long] = 'abc'
 class TestModAccountManager(unittest.TestCase):
     def setUp(self):
         self.protected_url = "http://test-mod-accountmanager.mutualauth.org/protected/"
-        self.public_url = "http://test-mod-accountmanager.mutualauth.org/"
+        self.public_url = "http://test-mod-accountmanager.mutualauth.org/hello.sh"
         self.amcd_url = "http://test-mod-accountmanager.mutualauth.org/amcd.json"
         self.realm = "mod_accountmanager test"
 
@@ -67,3 +67,8 @@ class TestModAccountManager(unittest.TestCase):
         self.assertEqual(200, res.code)
         self.assertTrue('X-Account-Management-Status' not in res.headers)
         self.assertHasLinkHeader(res)
+
+    def test_doesnt_clobber_other_handlers(self):
+        # hello.sh is handled by `AddHandler cgi-script .sh`
+        res = urllib2.urlopen(self.public_url)
+        self.assertEqual("hello\n", res.read())

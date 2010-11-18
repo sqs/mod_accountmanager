@@ -4,9 +4,6 @@ AuthBasicProvider file
 AuthUserFile /var/www/test-mod-accountmanager.mutualauth.org/protected/.htpasswd
 Require valid-user
 
-<Files "?*">
-    SetHandler accountmanager
-    AccountManagerAMCDURL "http://test-mod-accountmanager.mutualauth.org/amcd.json"
-</Files>
+AccountManagerAMCDURL "http://test-mod-accountmanager.mutualauth.org/amcd.json"
 
 # see tests for usernames and passwds
