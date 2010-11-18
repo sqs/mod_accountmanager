@@ -23,7 +23,7 @@ static int add_am_status_header(request_rec *r)
     if (!ap_is_initial_req(r))
         return DECLINED;
 
-    if (!r->user) {
+    if (!r->user || r->user[0] == '\0') {
         apr_table_mergen(r->headers_out, X_AMS_HEADER_KEY, X_AMS_INACTIVE);
         return DECLINED;
     }
