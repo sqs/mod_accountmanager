@@ -3,5 +3,13 @@
     "sessionstatus": {
         "method": "GET",
         "path": "/protected/"
+    },
+    "auth-methods": {
+        "http-pake": {
+            "connect": {
+                "path": "/optional/",
+                "realm": "protected area"
+            }
+        }
     }
 }
