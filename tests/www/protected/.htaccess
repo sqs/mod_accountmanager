@@ -6,4 +6,6 @@ Require valid-user
 
 AccountManagerAMCDURL "http://test-mod-accountmanager.mutualauth.org/amcd.json"
 
+AddHandler cgi-script .sh
+
 # see tests for usernames and passwds
